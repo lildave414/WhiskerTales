@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 30% 7%;
+    --foreground: 260 10% 95%;
+
+    --card: 260 25% 10%;
+    --card-foreground: 260 10% 95%;
+ 
+    --popover: 260 25% 10%;
+    --popover-foreground: 260 10% 95%;
+ 
+    --primary: 140 100% 65%;
+    --primary-foreground: 260 30% 7%;
+ 
+    --secondary: 290 100% 65%;
+    --secondary-foreground: 260 30% 7%;
+ 
+    --muted: 260 20% 20%;
+    --muted-foreground: 260 10% 70%;
+ 
+    --accent: 290 100% 65%;
+    --accent-foreground: 260 30% 7%;
+ 
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 260 30% 20%;
+    --input: 260 30% 20%;
+    --ring: 140 100% 65%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px hsla(140, 100%, 65%, 0.5),
+                0 0 10px hsla(140, 100%, 65%, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px hsla(140, 100%, 65%, 0.8),
+                0 0 25px hsla(140, 100%, 65%, 0.5);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.text-shadow-glow {
+  text-shadow: 0 0 4px hsla(var(--primary) / 0.5),
+               0 0 8px hsla(var(--primary) / 0.3);
+}
+
+.text-shadow-purple {
+  text-shadow: 0 0 4px hsla(var(--secondary) / 0.5),
+               0 0 8px hsla(var(--secondary) / 0.3);
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom styling for story cards */
+.story-card {
+  @apply relative overflow-hidden rounded-xl border shadow-lg transition-all duration-300;
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%);
+}
+
+.story-card:hover {
+  @apply shadow-xl transform -translate-y-1;
+}
